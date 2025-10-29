@@ -30,6 +30,7 @@
 	pkgs.fd
 	pkgs.git
 	pkgs.gh
+	pkgs.ulauncher
 
 		
 	pkgs.gnomeExtensions.vitals
@@ -185,7 +186,7 @@
     	};
     	"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
     	    		  name = "launcher";
-    	    		  command = "exec zsh /etc/nixos/appfzf";
+    	    		  command = "ulauncher";
     	    		  binding = "<Super>space";
     	};
     };

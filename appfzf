@@ -1,7 +1,4 @@
 #!/usr/bin/env sh
-# appfzf – fast .desktop launcher (POSIX sh)
-# Works even when some expected directories are missing.
-
 set -euo pipefail
 
 # ---------- configuration ----------
@@ -26,7 +23,6 @@ for p in /nix/store/*/share/applications; do
   [ -d "$p" ] && paths+=("$p")
 done
 
-# Keep only directories that actually exist
 valid_paths=()
 for d in "${paths[@]}"; do
   [ -d "$d" ] && valid_paths+=("$d")
@@ -83,8 +79,11 @@ fzf --with-nth=1 \
     --delimiter=$'\t' \
     --prompt='Launch: ' \
     --preview 'printf "%s\n\n%s\n" "{1}" "{2}"' \
-    --height=40% \
+    --height=100% \
     --border |
 while IFS=$'\t' read -r _ cmd; do
-  [ -n "$cmd" ] && sh -c "$cmd" & disown
+  # Start the selected command **in the background**,
+  # then exit this script so the temporary terminal closes.
+  sh -c "$cmd" >/dev/null 2>&1 &
+  exit 0
 done
