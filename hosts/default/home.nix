@@ -27,7 +27,8 @@
 	pkgs.swaybg
 	pkgs.ripgrep
 	pkgs.fzf
-
+	pkgs.fd
+	
 	pkgs.gnomeExtensions.vitals
 	
     # # It is sometimes useful to fine-tune packages, for example, by applying
