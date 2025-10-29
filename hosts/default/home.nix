@@ -28,7 +28,10 @@
 	pkgs.ripgrep
 	pkgs.fzf
 	pkgs.fd
-	
+	pkgs.git
+	pkgs.gh
+
+		
 	pkgs.gnomeExtensions.vitals
 	
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -172,12 +175,18 @@
     	  play = [ "<Shift><Control>space" ];
     	  custom-keybindings = [
     	    "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+    	    "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
     	   ];
     	};
     	"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
     		  name = "Wezterm";
     		  command = "wezterm";
     		  binding = "<Super>Return";
+    	};
+    	"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+    	    		  name = "launcher";
+    	    		  command = "exec zsh /etc/nixos/appfzf";
+    	    		  binding = "<Super>space";
     	};
     };
   };
